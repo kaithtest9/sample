@@ -134,5 +134,11 @@ def stream():
             yield f"Hello {i}\n"
     return generate(), {"Content-Type": "text/plain"}
 
+@app.route("/env_var")
+def env_var():
+    data = request.environ
+    print(data)
+    return jsonify({"data": data})
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="8080", debug=False)
